@@ -1,6 +1,6 @@
 <template lang="pug">
   div(id="content")
-    header
+    div(class="title")
       span {{ title }}
     div(class='current_day')
       span(class='high') {{ currentDay.high }}
@@ -47,7 +47,6 @@ export default {
           this.title = city
           this.city = city
         } else {
-          this.$message(res.data.message)
           this.query.city = this.city
         }
       })
@@ -72,7 +71,7 @@ export default {
 
 <style lang="scss">
   #content {
-    header {
+    .title {
       background: deepskyblue;
       display: block;
       width: 100%;
