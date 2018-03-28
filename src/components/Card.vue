@@ -4,7 +4,7 @@
       div(class="card-header-left")
         img(src="@/assets/avatar.jpg")
       div(class="card-header-right")
-        div(class="card-header-right-top") 老男孩
+        div(class="card-header-right-top") 黑米包子
         div(class="card-header-right-bottom")
           span(class="time") 24分钟前 &nbsp;&nbsp;&nbsp;
           span(class="from") 来自360安全浏览器
