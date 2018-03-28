@@ -127,7 +127,7 @@ export default {
   }
   .content {
     overflow: hidden;
-    height: 900px;
+    min-height: 800px;
     background: blue;
     width: 100%;
   }
