@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Weather from '@/components/Weather'
 import Pug from '@/components/Pug'
 import InfoStream from '@/components/InfoStream'
+import Card from '@/components/Card'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/pug',
       name: 'Pug',
       component: Pug
+    },
+    {
+      path: '/Card',
+      name: 'Card',
+      component: Card
     }
   ]
 })

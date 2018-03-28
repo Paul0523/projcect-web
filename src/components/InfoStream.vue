@@ -1,16 +1,27 @@
 <template lang="pug">
   div(class="infoStream")
-    img(src="@/assets/test.jpg")
-    br
-    | 再多一天
-    br
-    | 再多爱我一天
+    card
+    card
+    card
+    card
+    card
+    card
+    card
 </template>
+<script>
+import Card from '@/components/Card'
+export default {
+  name: 'InfoStream',
+  components: {
+    'card': Card
+  }
+}
+</script>
 <style lang="scss">
   .infoStream {
     width: 100%;
     text-align: center;
-    background: chartreuse;
+    background: #eeeeee;
     img {
       width: 90%;
     }

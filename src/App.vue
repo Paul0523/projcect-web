@@ -40,7 +40,7 @@ export default {
   },
   data () {
     return {
-      footer: [{text: '天气', name: 'Weather'}, {text: '我', name: 'InfoStream'}, {text: '她', name: 'Weather'}, {text: '他', name: 'Pug'}],
+      footer: [{text: '天气', name: 'Weather'}, {text: '我', name: 'InfoStream'}, {text: '她', name: 'Card'}, {text: '他', name: 'Pug'}],
       footerActiveIndex: 0,
       navBarFixed: false,
       navBarHeight: 200
