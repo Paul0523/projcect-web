@@ -62,7 +62,7 @@ export default {
         backgroundSize: '75px auto',
         backgroundPosition: '-24px 0px'
       },
-      showEdit: true
+      showEdit: false
     }
   }
 }
