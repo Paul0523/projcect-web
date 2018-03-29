@@ -1,13 +1,18 @@
 <template>
   <div id="app">
+    <transition name="fade">
+      <div id="edit" v-show="showEdit">
+        <div><button class="el-button" v-on:click="closeEdit()">关闭</button></div>
+      </div>
+    </transition>
     <div id="searchBar">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="brand"><span>day</span><span>life</span></span> <input class="text" placeholder="每日生活"/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="brand"><span>day</span><span>life</span></span> <input class="text" placeholder="发布" v-on:click="publish()"/><span id="pub" :style="pubStyle" v-on:click="myInfo()"></span>
     </div>
     <header id="navBar" :class="navBarFixed ? 'fixed' : ''">
       <li v-on:click="active(index)" :class="index == footerActiveIndex ? 'active' : ''" v-for="(data, index) in footer" :key="index">{{ data.text }}</li>
     </header>
     <div :class="navBarFixed ? 'show' : ''"></div>
-    <div class="content">
+    <div class="content" v-show="!showEdit">
       <keep-alive>
         <router-view/>
       </keep-alive>
@@ -36,14 +41,28 @@ export default {
       } else {
         this.navBarFixed = false
       }
+    },
+    myInfo () {
+    },
+    publish () {
+      this.showEdit = true
+    },
+    closeEdit () {
+      this.showEdit = false
     }
   },
   data () {
     return {
-      footer: [{text: '天气', name: 'InfoStream'}, {text: '我', name: 'InfoStream'}, {text: '她', name: 'InfoStream'}, {text: '他', name: 'InfoStream'}],
+      footer: [{text: '关注', name: 'InfoStream'}, {text: '我的', name: 'InfoStream'}, {text: '热门', name: 'InfoStream'}, {text: '其他', name: 'InfoStream'}],
       footerActiveIndex: 0,
       navBarFixed: false,
-      navBarHeight: 200
+      navBarHeight: 200,
+      pubStyle: {
+        backgroundImage: 'url(' + require('./assets/iconbg.png') + ')',
+        backgroundSize: '75px auto',
+        backgroundPosition: '-24px 0px'
+      },
+      showEdit: true
     }
   }
 }
@@ -66,6 +85,13 @@ export default {
   bottom: 0px;
   top: 0px;
   width: 100%;
+  #edit {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background: lightblue;
+    z-index: 10000;
+  }
   #searchBar {
     background: #1870fa;
     height: 44px;
@@ -82,7 +108,7 @@ export default {
     }
     .text {
       position: absolute;
-      right: 46px;
+      right: 55px;
       text-indent: 15px;
       border-radius: 100px;
       border: 0px solid;
@@ -90,6 +116,13 @@ export default {
       width: 46%;
       top: 9px;
       outline: none;
+    }
+    #pub {
+      position: absolute;
+      right: 15px;
+      top: 13px;
+      width: 20px;
+      height: 20px;
     }
   }
   .banner {
@@ -120,7 +153,7 @@ export default {
   .fixed {
     position: fixed;
     top: 0px;
-    z-index: 100000;
+    z-index: 100;
   }
   .show {
     height: 44px;

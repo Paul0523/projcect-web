@@ -11,21 +11,6 @@ export default new Router({
       path: '/InfoStream',
       name: 'InfoStream',
       component: InfoStream
-    },
-    {
-      path: '/InfoStream',
-      name: 'InfoStream',
-      component: InfoStream
-    },
-    {
-      path: '/InfoStream',
-      name: 'InfoStream',
-      component: InfoStream
-    },
-    {
-      path: '/InfoStream',
-      name: 'InfoStream',
-      component: InfoStream
     }
   ]
 })

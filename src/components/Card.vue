@@ -8,12 +8,13 @@
         div(class="card-header-right-bottom")
           span(class="time") 24分钟前 &nbsp;&nbsp;&nbsp;
           span(class="from") 来自360安全浏览器
-    div(class="card-content") 测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+    div(class="card-content") {{ cardInfo.content }}
     div(class="card-media")
 </template>
 <script>
 export default {
-  name: 'Card'
+  name: 'Card',
+  props: ['cardInfo']
 }
 </script>
 <style lang="scss">
