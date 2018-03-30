@@ -7,8 +7,13 @@ import Card from '@/components/Card'
 export default {
   name: 'InfoStream',
   mounted () {
-    this.$axios.get('/api/record/my').then((res) => {
-      this.cardInfo = res.data
+    var userId = this.$cookie.get('user_id')
+    var token = this.$cookie.get('token')
+    var header = {user_id: userId, token: token}
+    this.$axios.get('/api/record/my', {headers: header}).then(res => {
+      if (res.data.status === 200) {
+        this.cardInfo = res.data.data
+      }
     })
   },
   components: {
