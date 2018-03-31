@@ -4,17 +4,37 @@
       div(class="card-header-left")
         img(src="@/assets/avatar.jpg")
       div(class="card-header-right")
-        div(class="card-header-right-top") 黑米包子
+        div(class="card-header-right-top") {{ cardInfo.nickname }}
         div(class="card-header-right-bottom")
-          span(class="time") 24分钟前 &nbsp;&nbsp;&nbsp;
+          span(class="time") {{ dealTime(cardInfo.create_at) }} &nbsp;&nbsp;&nbsp;
           span(class="from") 来自360安全浏览器
     div(class="card-content") {{ cardInfo.content }}
     div(class="card-media")
 </template>
 <script>
+import timeUtil from '@/time_util'
 export default {
   name: 'Card',
-  props: ['cardInfo']
+  props: ['cardInfo'],
+  methods: {
+    dealTime (time) {
+      var date = new Date()
+      var nowTs = date.getTime()
+      date.setTime(time)
+      var delt = nowTs - time
+      if (nowTs - time < 30 * timeUtil.minute) {
+        return '刚刚'
+      } else if (nowTs - time < timeUtil.hour) {
+        return parseInt(delt / timeUtil.minute) + '分钟前'
+      } else if (delt < timeUtil.day) {
+        return parseInt(delt / timeUtil.hour) + '小时前'
+      } else if (delt < 2 * timeUtil.day) {
+        return parseInt(delt / timeUtil.day) + '天前'
+      } else {
+        return timeUtil.format(date, 'yyyy-MM-dd hh:mm:ss')
+      }
+    }
+  }
 }
 </script>
 <style lang="scss">
