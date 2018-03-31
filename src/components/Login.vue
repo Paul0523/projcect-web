@@ -38,6 +38,9 @@ export default {
           this.$cookie.set('token', data.token, '0')
           this.$cookie.set('user_id', data.id, '0')
           this.$router.push('/')
+        } else if (res.data.status === 600) {
+          this.$message(res.data.message)
+          this.$router.push('/login')
         } else {
           this.$message(res.data.message)
         }
