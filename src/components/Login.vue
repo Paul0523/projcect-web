@@ -43,17 +43,24 @@ export default {
     },
     sendVerifyCode () {
       console.log('发送验证码')
-      var timer = setInterval(() => {
-        this.verifyCodeTime--
-        this.verifyCodeTimeShow = true
-        this.verifyCodeText = this.verifyCodeTime + 's'
-        if (this.verifyCodeTime === 1) {
-          clearInterval(timer)
-          this.verifyCodeText = '发送'
-          this.verifyCodeTime = 50
-          this.verifyCodeTimeShow = false
+      this.$axios.get('/api/user/send_verify_code', {params: {phone: this.phone}}).then(res => {
+        if (res.data.status === 200) {
+          this.$message('发送成功')
+          var timer = setInterval(() => {
+            this.verifyCodeTime--
+            this.verifyCodeTimeShow = true
+            this.verifyCodeText = this.verifyCodeTime + 's'
+            if (this.verifyCodeTime === 1) {
+              clearInterval(timer)
+              this.verifyCodeText = '发送'
+              this.verifyCodeTime = 50
+              this.verifyCodeTimeShow = false
+            }
+          }, 1000)
+        } else {
+          this.$message(res.data.message)
         }
-      }, 1000)
+      })
     }
   },
   mounted () {
