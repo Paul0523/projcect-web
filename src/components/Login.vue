@@ -38,6 +38,8 @@ export default {
           this.$cookie.set('token', data.token, '0')
           this.$cookie.set('user_id', data.id, '0')
           this.$router.push('/')
+        } else {
+          this.$message(res.data.message)
         }
       })
     },
