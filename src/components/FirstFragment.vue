@@ -1,10 +1,5 @@
 <template>
   <div id="first_fragment">
-    <transition name="fade">
-      <div id="edit" v-show="showEdit">
-        <div><button class="el-button" v-on:click="closeEdit()">关闭</button></div>
-      </div>
-    </transition>
     <div id="searchBar">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="brand"><span>day</span><span>life</span></span> <input class="text" placeholder="发布" v-on:click="publish()"/><span id="pub" :style="pubStyle" v-on:click="myInfo()"></span>
     </div>
@@ -26,7 +21,7 @@ export default {
   mounted () {
     window.addEventListener('scroll', this.handleScroll)
     this.navBarHeight = document.querySelector('#navBar').offsetTop
-    var token = this.$cookie.get('token')
+    var token = this.$cookies.get('token')
     if (!token) {
       this.$router.push('/login')
     }
@@ -46,7 +41,7 @@ export default {
       }
     },
     myInfo () {
-      var token = this.$cookie.get('token')
+      var token = this.$cookies.get('token')
       if (!token) {
         console.log('请登录！！')
         this.$router.push('/login')
@@ -56,10 +51,7 @@ export default {
       }
     },
     publish () {
-      this.showEdit = true
-    },
-    closeEdit () {
-      this.showEdit = false
+      this.$router.push('/edit')
     }
   },
   data () {
@@ -78,3 +70,84 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  #edit {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background: lightblue;
+    z-index: 10000;
+  }
+  #searchBar {
+    background: #1870fa;
+    height: 44px;
+    line-height: 44px;
+    text-align: left;
+    .brand {
+      font-size: 15pt;
+      span:first-child {
+        color: red;
+      }
+      span:nth-child(2) {
+        color: white;
+      }
+    }
+    .text {
+      position: absolute;
+      right: 55px;
+      text-indent: 15px;
+      border-radius: 100px;
+      border: 0px solid;
+      height: 30px;
+      width: 46%;
+      top: 9px;
+      outline: none;
+    }
+    #pub {
+      position: absolute;
+      right: 15px;
+      top: 13px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .banner {
+    height: 200px;
+    width: 100%;
+    background: gold;
+  }
+  header {
+    width: 100%;
+    height: 44px;
+    background: #1870fa;
+    li {
+      width: 25%;
+      float: left;
+      list-style-type: none;
+      line-height: 44px;
+      box-sizing: border-box;
+      font-size: 18px;
+      opacity: 0.5;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .active {
+      color: white;
+      opacity: 1;
+    }
+  }
+  .fixed {
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+  }
+  .show {
+    height: 44px;
+  }
+  .content {
+    overflow: hidden;
+    min-height: 800px;
+    background: blue;
+    width: 100%;
+  }
+</style>

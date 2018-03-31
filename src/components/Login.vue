@@ -35,8 +35,9 @@ export default {
         if (res.data.status === 200) {
           var data = res.data.data
           this.$message('欢迎回来' + data.nickname)
-          this.$cookie.set('token', data.token, '0')
-          this.$cookie.set('user_id', data.id, '0')
+          // cookie 有效期为设为90天
+          this.$cookies.set('token', data.token, '90d')
+          this.$cookies.set('user_id', data.id, '90d')
           this.$router.push('/')
         } else if (res.data.status === 600) {
           this.$message(res.data.message)
@@ -47,10 +48,10 @@ export default {
       })
     },
     sendVerifyCode () {
-      console.log('发送验证码')
       this.$axios.get('/api/user/send_verify_code', {params: {phone: this.phone}}).then(res => {
         if (res.data.status === 200) {
           this.$message('发送成功')
+          this.verifyCodeText = this.verifyCodeTime + 's'
           var timer = setInterval(() => {
             this.verifyCodeTime--
             this.verifyCodeTimeShow = true
@@ -69,7 +70,7 @@ export default {
     }
   },
   mounted () {
-    var token = this.$cookie.get('token')
+    var token = this.$cookies.get('token')
     // token存在直接跳回主页
     if (token) {
       this.$router.push('/')

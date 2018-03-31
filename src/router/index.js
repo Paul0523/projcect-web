@@ -6,6 +6,7 @@ import InfoStream from '@/components/InfoStream'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import MyInfo from '@/components/MyInfo'
+import Edit from '@/components/Edit'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
       path: '/myinfo',
       name: 'myinfo',
       component: MyInfo
+    },
+    {
+      path: '/edit',
+      name: 'edit',
+      component: Edit
     }
   ]
 })
