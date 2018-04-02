@@ -13,6 +13,11 @@ export default {
     this.$axios.get('/api/record/my', {headers: header}).then(res => {
       if (res.data.status === 200) {
         this.cardInfo = res.data.data
+      } else if (res.data.status === 600) {
+        this.$message('请登录！')
+        this.$router.push('/login')
+        this.$cookies.remove('user_id')
+        this.$cookies.remove('token')
       }
     })
   },
