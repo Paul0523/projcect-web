@@ -1,7 +1,7 @@
 <template lang="pug">
   div(id="edit-view")
     div(class="edit-header")
-      span(class="edit-cancel") 取消
+      span(class="edit-cancel" @click="cancel()") 取消
       div
         div(class="edit-title") 发微博
         div(class="edit-nickname") 黑米包子
@@ -30,6 +30,9 @@ export default {
           this.$router.push('/')
         }
       })
+    },
+    cancel () {
+      this.$router.go(-1)
     }
   }
 }

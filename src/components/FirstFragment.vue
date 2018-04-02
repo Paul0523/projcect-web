@@ -1,7 +1,7 @@
 <template>
   <div id="first_fragment">
     <div id="searchBar">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="brand"><span>day</span><span>life</span></span> <input class="text" placeholder="发布" v-on:click="publish()"/><span id="pub" :style="pubStyle" v-on:click="myInfo()"></span>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="brand"><span>day</span><span>life</span></span> <span class="text" placeholder="发布" v-on:click="publish()">发布</span><span id="pub" :style="pubStyle" v-on:click="myInfo()"></span>
     </div>
     <header id="navBar" :class="navBarFixed ? 'fixed' : ''">
       <li v-on:click="active(index)" :class="index == footerActiveIndex ? 'active' : ''" v-for="(data, index) in footer" :key="index">{{ data.text }}</li>
@@ -102,6 +102,10 @@ export default {
       width: 46%;
       top: 9px;
       outline: none;
+      background: white;
+      line-height: 30px;
+      color: #c0c4cc;
+      font-size: 12px;
     }
     #pub {
       position: absolute;

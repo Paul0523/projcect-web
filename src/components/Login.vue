@@ -38,10 +38,7 @@ export default {
           // cookie 有效期为设为90天
           this.$cookies.set('token', data.token, '90d')
           this.$cookies.set('user_id', data.id, '90d')
-          this.$router.push('/')
-        } else if (res.data.status === 600) {
-          this.$message(res.data.message)
-          this.$router.push('/login')
+          this.$router.go(-1)
         } else {
           this.$message(res.data.message)
         }
