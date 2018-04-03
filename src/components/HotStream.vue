@@ -10,7 +10,7 @@ export default {
     var userId = this.$cookies.get('user_id')
     var token = this.$cookies.get('token')
     var header = {user_id: userId, token: token}
-    this.$axios.get('/api/record/my_follow', {headers: header}).then(res => {
+    this.$axios.get('/api/record/hot_record', {headers: header}).then(res => {
       if (res.data.status === 200) {
         this.cardInfo = res.data.data
       } else if (res.data.status === 600) {

@@ -7,6 +7,9 @@ import Register from '@/components/Register'
 import Login from '@/components/Login'
 import MyInfo from '@/components/MyInfo'
 import Edit from '@/components/Edit'
+import MyStream from '@/components/MyStream'
+import HotStream from '@/components/HotStream'
+import CardDetail from '@/components/CardDetail'
 
 Vue.use(Router)
 
@@ -25,6 +28,16 @@ export default new Router({
           path: '/FirstFragment/InfoStream',
           component: InfoStream,
           name: 'InfoStream'
+        },
+        {
+          path: '/FirstFragment/MyStream',
+          component: MyStream,
+          name: 'MyStream'
+        },
+        {
+          path: '/FirstFragment/HotStream',
+          component: HotStream,
+          name: 'HotStream'
         }
       ]
     },
@@ -47,6 +60,11 @@ export default new Router({
       path: '/edit',
       name: 'edit',
       component: Edit
+    },
+    {
+      path: '/cardDetail',
+      name: 'cardDetail',
+      component: CardDetail
     }
   ]
 })

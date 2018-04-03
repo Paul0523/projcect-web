@@ -4,7 +4,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="brand"><span>day</span><span>life</span></span> <span class="text" placeholder="发布" v-on:click="publish()">发布</span><span id="pub" :style="pubStyle" v-on:click="myInfo()"></span>
     </div>
     <header id="navBar" :class="navBarFixed ? 'fixed' : ''">
-      <li v-on:click="active(index)" :class="index == footerActiveIndex ? 'active' : ''" v-for="(data, index) in footer" :key="index">{{ data.text }}</li>
+      <router-link tag="li" :to="data.path" v-on:click="active(index)" :class="index == footerActiveIndex ? 'active' : ''" v-for="(data, index) in footer" :key="index">{{ data.text }}</router-link>
     </header>
     <div :class="navBarFixed ? 'show' : ''"></div>
     <div class="content" v-show="!showEdit">
@@ -56,7 +56,7 @@ export default {
   },
   data () {
     return {
-      footer: [{text: '关注', name: 'InfoStream'}, {text: '我的', name: 'InfoStream'}, {text: '热门', name: 'InfoStream'}, {text: '其他', name: 'InfoStream'}],
+      footer: [{text: '关注', name: 'InfoStream', path: '/FirstFragment/InfoStream'}, {text: '我的', name: 'InfoStream', path: '/FirstFragment/MyStream'}, {text: '热门', name: 'HotStream', path: '/FirstFragment/HotStream'}],
       footerActiveIndex: 0,
       navBarFixed: false,
       navBarHeight: 200,
@@ -125,7 +125,7 @@ export default {
     height: 44px;
     background: #1870fa;
     li {
-      width: 25%;
+      width: 33.33%;
       float: left;
       list-style-type: none;
       line-height: 44px;
@@ -135,7 +135,7 @@ export default {
       cursor: pointer;
       font-weight: bold;
     }
-    .active {
+    .router-link-active {
       color: white;
       opacity: 1;
     }

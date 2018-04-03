@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="card")
+  div(class="card" @click="clickCard()")
     div(class="card-header")
       div(class="card-header-left")
         img(src="@/assets/avatar.jpg")
@@ -33,6 +33,10 @@ export default {
       } else {
         return timeUtil.format(date, 'yyyy-MM-dd hh:mm:ss')
       }
+    },
+    clickCard () {
+      console.log(this.cardInfo.id)
+      this.$router.push({path: '/cardDetail', query: {recordId: this.cardInfo.id}})
     }
   }
 }
