@@ -4,7 +4,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="brand"><span>day</span><span>life</span></span> <span class="text" placeholder="发布" v-on:click="publish()">发布</span><span id="pub" :style="pubStyle" v-on:click="myInfo()"></span>
     </div>
     <header id="navBar" :class="navBarFixed ? 'fixed' : ''">
-      <router-link tag="li" :to="data.path" v-on:click="active(index)" :class="index == footerActiveIndex ? 'active' : ''" v-for="(data, index) in footer" :key="index">{{ data.text }}</router-link>
+      <router-link replace tag="li" :to="data.path" v-on:click="active(index)" :class="index == footerActiveIndex ? 'active' : ''" v-for="(data, index) in footer" :key="index">{{ data.text }}</router-link>
     </header>
     <div :class="navBarFixed ? 'show' : ''"></div>
     <div class="content" v-show="!showEdit">
