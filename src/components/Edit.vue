@@ -27,7 +27,7 @@ export default {
         this.$message(res.data.message)
         if (res.data.status === 200) {
           this.content = ''
-          this.$router.push('/')
+          this.$router.go(-1)
         }
       })
     },
