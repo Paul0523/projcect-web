@@ -38,7 +38,7 @@ export default {
       this.$router.push('/login')
     },
     goBack () {
-      this.$router.push('/')
+      this.$router.push(-1)
     }
   }
 }
